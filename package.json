@@ -1,5 +1,5 @@
 {
-  "name": "TypeScript Helpers",
+  "name": "@benjymoses/helpers",
   "description": "Helper libraries for TypeScript",
   "repository": {
     "type": "git",
