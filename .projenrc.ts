@@ -29,7 +29,7 @@ _We encourage you to keep the code coverage percentage at 80% and above._
 const project = new typescript.TypeScriptProject({
   defaultReleaseBranch: "main",
   name: "TypeScript Helpers",
-  packageName: "TypeScript Helpers",
+  packageName: "@benjymoses/helpers",
 
   projenrcTs: true,
   packageManager: NodePackageManager.NPM,
@@ -42,8 +42,10 @@ const project = new typescript.TypeScriptProject({
   depsUpgrade: true,
 
   npmTokenSecret: "NPM_TOKEN",
-  npmAccess: NpmAccess.PUBLIC,
 
+  npmAccess: NpmAccess.PUBLIC,
+  releaseToNpm: true,
+  release: true,
   githubOptions: {
     pullRequestLintOptions: {
       contributorStatement:
