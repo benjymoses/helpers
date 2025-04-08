@@ -53,10 +53,7 @@
     ],
     "quotes": [
       "error",
-      "single",
-      {
-        "avoidEscape": true
-      }
+      "double"
     ],
     "comma-dangle": [
       "error",
