@@ -21,7 +21,7 @@ pull_request_rules:
       delete_head_branch: {}
     conditions:
       - author=benjymoses
-      - status-success=build
+      - status-success=build/build (pull_request)
       - head=github-actions/upgrade-main
   - name: Automatic merge on approval and successful build
     actions:

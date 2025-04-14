@@ -71,7 +71,7 @@ const project = new typescript.TypeScriptProject({
           },
           conditions: [
             "author=benjymoses",
-            "status-success=build",
+            "status-success=build/build (pull_request)",
             "head=github-actions/upgrade-main",
           ],
         },
