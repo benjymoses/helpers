@@ -57,6 +57,24 @@ const project = new typescript.TypeScriptProject({
         exemptUsers: ["benjymoses", "github-actions"],
       },
     },
+    mergifyOptions: {
+      rules: [
+        {
+          actions: {
+            merge: {
+              method: "squash",
+              remove_source_branch: true,
+            },
+          },
+          name: "Auto-merge UpgradeMain PRs",
+          conditions: [
+            "author=benjymoses",
+            "status-success=*",
+            "head=github-actions/upgrade-main",
+          ],
+        },
+      ],
+    },
   },
 
   gitignore: [
