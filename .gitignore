@@ -19,7 +19,6 @@ pids
 *.seed
 *.pid.lock
 lib-cov
-coverage
 *.lcov
 .nyc_output
 build/Release
@@ -33,6 +32,10 @@ jspm_packages/
 node_modules/
 dist/
 .vscode
+coverage
+lib
+test-reports
+tsconfig.tsbuildinfo
 /test-reports/
 junit.xml
 /coverage/

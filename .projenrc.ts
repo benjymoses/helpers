@@ -1,5 +1,4 @@
 import { ReleasableCommits, typescript } from "projen";
-import { GithubCredentials } from "projen/lib/github";
 import { NodePackageManager, NpmAccess } from "projen/lib/javascript";
 
 const prTemplate = `## What type of PR is this? (check all applicable)
@@ -51,7 +50,6 @@ const project = new typescript.TypeScriptProject({
   releaseToNpm: true,
   release: true,
   githubOptions: {
-    projenCredentials:  ,
     pullRequestLintOptions: {
       contributorStatement:
         "By submitting this pull request, I confirm that you can use, modify, copy, and redistribute this contribution, under the terms of the project license.",
