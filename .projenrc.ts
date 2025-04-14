@@ -60,16 +60,18 @@ const project = new typescript.TypeScriptProject({
     mergifyOptions: {
       rules: [
         {
+          name: "Auto-merge UpgradeMain PRs",
           actions: {
             merge: {
               method: "squash",
-              remove_source_branch: true,
+              commit_message_template:
+                "Squashed commit for PR #{{number}}: {{title}} from upgrade-main workflow.",
             },
+            delete_head_branch: {},
           },
-          name: "Auto-merge UpgradeMain PRs",
           conditions: [
             "author=benjymoses",
-            "status-success=*",
+            "status-success=build",
             "head=github-actions/upgrade-main",
           ],
         },
