@@ -1,4 +1,5 @@
 import { ReleasableCommits, typescript } from "projen";
+import { GithubCredentials } from "projen/lib/github";
 import { NodePackageManager, NpmAccess } from "projen/lib/javascript";
 
 const prTemplate = `## What type of PR is this? (check all applicable)
@@ -27,26 +28,30 @@ _We encourage you to keep the code coverage percentage at 80% and above._
     `.split(/\r?\n/);
 
 const project = new typescript.TypeScriptProject({
-  defaultReleaseBranch: "main",
   name: "TypeScript Helpers",
   packageName: "@benjymoses/helpers",
-
-  projenrcTs: true,
   packageManager: NodePackageManager.NPM,
   authorName: "Ben Moses",
   description: "Helper libraries for TypeScript",
   repository: "https://github.com/benjymoses/helpers",
   keywords: ["typescript", "helper", "helpers"],
-  devDeps: ["ts-node", "eslint"],
+  projenrcTs: true,
+  licensed: true,
+  license: "MIT",
+
+  stability: "experimental",
+  defaultReleaseBranch: "main",
+  releasableCommits: ReleasableCommits.featuresAndFixes(),
 
   depsUpgrade: true,
+  pullRequestTemplateContents: prTemplate,
 
   npmTokenSecret: "NPM_TOKEN",
-
   npmAccess: NpmAccess.PUBLIC,
   releaseToNpm: true,
   release: true,
   githubOptions: {
+    projenCredentials:  ,
     pullRequestLintOptions: {
       contributorStatement:
         "By submitting this pull request, I confirm that you can use, modify, copy, and redistribute this contribution, under the terms of the project license.",
@@ -56,14 +61,18 @@ const project = new typescript.TypeScriptProject({
     },
   },
 
-  pullRequestTemplateContents: prTemplate,
-  licensed: true,
-  license: "MIT",
+  gitignore: [
+    ".DS_Store",
+    "node_modules/",
+    "dist/",
+    ".vscode",
+    "coverage",
+    "lib",
+    "test-reports",
+    "tsconfig.tsbuildinfo",
+  ],
 
-  gitignore: [".DS_Store", "node_modules/", "dist/", ".vscode"],
-
-  stability: "experimental",
-  releasableCommits: ReleasableCommits.featuresAndFixes(),
+  devDeps: ["ts-node", "eslint"],
 });
 
 project.eslint?.addRules({
