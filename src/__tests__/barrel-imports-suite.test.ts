@@ -18,7 +18,12 @@ function getAllTsFiles(dir: string): string[] {
 
     if (stat.isDirectory() && item !== "__tests__") {
       files.push(...getAllTsFiles(fullPath));
-    } else if (stat.isFile() && item.endsWith(".ts") && item !== "index.ts") {
+    } else if (
+      stat.isFile() &&
+      item.endsWith(".ts") &&
+      item !== "index.ts" &&
+      !item.endsWith(".d.ts")
+    ) {
       files.push(fullPath);
     }
   }
@@ -53,7 +58,7 @@ describe("Barrel test suite", () => {
       for (const expectedExport of expectedExports) {
         expect(exportedFunctions).toContain(expectedExport);
         expect(typeof (helperExports as HelperExports)[expectedExport]).toBe(
-          "function",
+          "function"
         );
       }
 
@@ -70,7 +75,7 @@ describe("Barrel test suite", () => {
         expect(`${fileName} should have TSDoc comments`).toBe(
           hasDoc
             ? `${fileName} should have TSDoc comments`
-            : `${fileName} is missing TSDoc comments`,
+            : `${fileName} is missing TSDoc comments`
         );
       });
     });
