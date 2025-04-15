@@ -41,6 +41,15 @@ const project = new typescript.TypeScriptProject({
   licensed: true,
   license: "MIT",
 
+  tsconfig: {
+    compilerOptions: {
+      baseUrl: ".",
+      paths: {
+        "*": ["node_modules/*", "src/*"],
+      },
+    },
+  },
+
   stability: "experimental",
   defaultReleaseBranch: "main",
   releasableCommits: ReleasableCommits.featuresAndFixes(),
