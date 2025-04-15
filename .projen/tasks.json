@@ -189,20 +189,15 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "jest --passWithNoTests --updateSnapshot",
-          "receiveArgs": true
-        },
-        {
-          "spawn": "eslint"
+          "exec": "jest --config jest.config.js --rootDir ./"
         }
       ]
     },
-    "test:watch": {
-      "name": "test:watch",
-      "description": "Run jest in watch mode",
+    "test:coverage": {
+      "name": "test:coverage",
       "steps": [
         {
-          "exec": "jest --watch"
+          "exec": "jest --coverage --coverageReporters='text' --coverageReporters='text-summary' --verbose"
         }
       ]
     },
@@ -238,7 +233,7 @@
           "exec": "npm install"
         },
         {
-          "exec": "npm update @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit projen ts-jest ts-node typescript"
+          "exec": "npm update @stylistic/eslint-plugin @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser commit-and-tag-version constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest projen ts-jest ts-node typescript"
         },
         {
           "exec": "npx projen"

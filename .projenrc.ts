@@ -1,6 +1,9 @@
 import { ReleasableCommits, typescript } from "projen";
 import { NodePackageManager, NpmAccess } from "projen/lib/javascript";
 
+import * as fs from "fs";
+import * as path from "path";
+
 const prTemplate = `## What type of PR is this? (check all applicable)
 
 - [ ] Refactor
@@ -79,6 +82,9 @@ const project = new typescript.TypeScriptProject({
     },
   },
 
+  sampleCode: false,
+  jest: false,
+
   gitignore: [
     ".DS_Store",
     "node_modules/",
@@ -88,13 +94,44 @@ const project = new typescript.TypeScriptProject({
     "lib",
     "test-reports",
     "tsconfig.tsbuildinfo",
+    "coverage/",
   ],
 
-  devDeps: ["ts-node", "eslint"],
+  devDeps: [
+    "ts-node",
+    "eslint",
+    "@types/jest",
+    "@types/node",
+    "jest",
+    "ts-jest",
+    "typescript",
+  ],
 });
 
 project.eslint?.addRules({
   quotes: ["error", "double"],
 });
+
+project.addTask("test:coverage", {
+  exec: "jest --coverage --coverageReporters='text' --coverageReporters='text-summary' --verbose",
+});
+
+project.testTask.reset();
+project.testTask.exec("jest --config jest.config.js --rootDir ./");
+
+const jestConfigPath = path.join(__dirname, "jest.config.js");
+fs.writeFileSync(
+  jestConfigPath,
+  `/** @type {import('ts-jest').JestConfigWithTsJest} **/
+module.exports = {
+  testEnvironment: "node",
+  transform: {
+    "^.+.tsx?$": ["ts-jest", {}],
+  },
+  testMatch: ["**/*-suite.test.[jt]s?(x)"],
+  testPathIgnorePatterns: ["/node_modules/"],
+};
+`
+);
 
 project.synth();

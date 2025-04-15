@@ -37,9 +37,7 @@ coverage
 lib
 test-reports
 tsconfig.tsbuildinfo
-/test-reports/
-junit.xml
-/coverage/
+coverage/
 !/.github/workflows/build.yml
 /dist/changelog.md
 /dist/version.txt
