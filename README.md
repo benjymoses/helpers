@@ -1,17 +1,19 @@
-# Helpers
-### An open source library of code helpers for TypeScript projects
-
 <div align="center">
+
+# Helpers
+
 <img src="https://img.shields.io/github/license/benjymoses/helpers"/>
-![GitHub Actions 'Build' Workflow Status](https://img.shields.io/github/actions/workflow/status/benjymoses/helpers/build.yml)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/benjymoses/helpers)
+<img src="https://img.shields.io/github/actions/workflow/status/benjymoses/helpers/build.yml" />
+<img src="https://img.shields.io/github/commit-activity/m/benjymoses/helpers" />
 
 <!-- ![GitHub Actions 'upgrade-main' Workflow Status](https://img.shields.io/github/actions/workflow/status/benjymoses/helpers/upgrade-main.yml) -->
 <!--![GitHub branch check runs](https://img.shields.io/github/check-runs/benjymoses/helpers/main) -->
 <!-- ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/benjymoses/helpers) -->
 <!-- ![GitHub Open Pull Requests](https://img.shields.io/github/issues-pr/benjymoses/helpers) -->
 </div>
+</br>
 
+### An open source library of code helpers for TypeScript projects
 It's common when writing TypeScript projects to re-use common helper functions, types, and utilities to turbo-charge your development. This collection of helper utilities is designed to be easy to import in to your project and give you quick access to meaingful helpers. The objective is to reduce re-creating or copy/pasting these types of helper for each project you work on.
 
 ---
@@ -65,7 +67,10 @@ Optionally you can pass an `options` object to `discoverArguments()` with 2 opti
 - **label?** \[string\]: a label to prefix the console.log entries with
 - **returnValue?** \[any\]: a value that you want the function to return instead of the default (first element received by the function)
 
-Example:
+<details>
+
+<summary>Example:</summary>
+
 ```ts
 "helloWorld".replace(/[eo]/g, discoverArguments({
     label: "helloWorld replace",
@@ -85,9 +90,13 @@ helloWorld replace callback received:  {
   ]
 }
 ```
+</details>
+  
+### Validators
 
-### Validators
-Zod validator helpers coming soon
+Zod validator helpers coming soon.
+
+---
 
 ## Getting started
 1. Install the package in your project `npm install -D @benjymoses/helpers`
@@ -106,8 +115,10 @@ import { capital } from "@benjymoses/helpers";
 
 capital("hello")
 ```
+  
+---
 
-## Contributing
+## Contributing
 Open to contribution. If you have ideas for useful helpers you'd like to see here, feel free to submit a PR, or open a feature request issue.
 
 <!-- // TODO: links to PR and feature-request issue -->
@@ -123,9 +134,10 @@ You should have TypeScript and ts-node installed globally `npm install -g typesc
 3. Run `npx projen` - this will cause Projen to use the *.projenrc.ts* to ensure all scaffolding is in place, and that npm packages are installed. You're welcome to then run `npm install` to be satisfied that all packages are installed.
 4. Create a new branch `git checkout -b my-new-feature`
 
-Develop your features / fixes. Please update the relevant \#\# Helpers section in *README.md* if this is a new feature / helper.
+Develop your features / fixes. Please update the relevant \#\#Helpers section in *README.md* if this is a new feature / helper.
+  
 
-#### Testing
+#### Testing
 Tests of core functinoality are required, and testing edge cases is preferable. Take a look at existing tests for inspiration.
 
 Tests live alongside the code. For example if you're writing a new string function `alternatingCase()` the code would reside in *src/string/alternatingCase.ts* and the tests would live in *src/string/\_\_tests\_\_/alternatingCase.test.ts*.
@@ -171,6 +183,8 @@ you can now run your tests with `npx projen test` or `npx projen test:coverage`
 5. Open a PR and complete the template
 
 <!-- // TODO: add link for new PR -->
+
+---
 
 ## License
 MIT [view](https://github.com/benjymoses/helpers?tab=MIT-1-ov-file#readme)
