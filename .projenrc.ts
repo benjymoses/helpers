@@ -100,7 +100,7 @@ const project = new typescript.TypeScriptProject({
     "dist/",
     ".vscode",
     "coverage",
-    "lib",
+    "lib/",
     "test-reports",
     "tsconfig.tsbuildinfo",
     "coverage/",
@@ -137,10 +137,27 @@ module.exports = {
   transform: {
     "^.+.tsx?$": ["ts-jest", {}],
   },
-  testMatch: ["**/*-suite.test.[jt]s?(x)"],
-  testPathIgnorePatterns: ["/node_modules/"],
+  testMatch: ["**/*.test.[jt]s?(x)"],
+  testPathIgnorePatterns: ["/node_modules/", "/lib/", "/dist/"],
 };
 `
 );
+
+project.addFields({
+  exports: {
+    ".": {
+      import: "./lib/index.js",
+      require: "./lib/index.js",
+    },
+    "./strings": {
+      import: "./lib/strings/index.js",
+      require: "./lib/strings/index.js",
+    },
+    "./objects": {
+      import: "./lib/objects/index.js",
+      require: "./lib/objects/index.js",
+    },
+  },
+});
 
 project.synth();

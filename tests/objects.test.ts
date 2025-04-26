@@ -1,6 +1,6 @@
-import { discoverArguments } from "../discoverArguments";
+import { discoverArguments } from "../src/objects";
 
-export function discoverArgumentsTests() {
+describe("Object test suite", () => {
   describe("discoverArguments", () => {
     let consoleLogSpy: jest.SpyInstance;
 
@@ -61,4 +61,4 @@ export function discoverArgumentsTests() {
       expect(loggedData.numberOfArgs).toBe(5); // match, p1, p2, offset, string
     });
   });
-}
+});
