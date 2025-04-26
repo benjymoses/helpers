@@ -61,6 +61,10 @@ const project = new typescript.TypeScriptProject({
   npmAccess: NpmAccess.PUBLIC,
   releaseToNpm: true,
   release: true,
+  npmIgnoreOptions: {
+    ignorePatterns: ["**/*.test.ts", "jest.config.js"],
+  },
+
   githubOptions: {
     pullRequestLintOptions: {
       contributorStatement:
