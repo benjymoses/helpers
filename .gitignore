@@ -34,7 +34,7 @@ node_modules/
 dist/
 .vscode
 coverage
-lib
+lib/
 test-reports
 tsconfig.tsbuildinfo
 coverage/
