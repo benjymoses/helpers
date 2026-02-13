@@ -187,4 +187,4 @@ you can now run your tests with `npx projen test` or `npx projen test:coverage`
 ---
 
 ## License
-MIT [view](https://github.com/benjymoses/helpers?tab=MIT-1-ov-file#readme)
+MIT ([view](https://github.com/benjymoses/helpers?tab=MIT-1-ov-file#readme))
